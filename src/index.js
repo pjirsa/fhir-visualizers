@@ -530,6 +530,17 @@ class DocumentReferencesVisualizer extends GenericVisualizer {
   };
 }
 
+class MediaVisualizer extends GenericVisualizer {
+  static defaultProps = {
+    title: 'Media',
+    columns: [
+      { title: 'Date', versions: '*', format: 'date', getter: d => d.createdDateTime },
+      { title: 'Content', versions: '*', getter: d => d.content.url }
+    ],
+    keyFn: m => m.id
+  };
+}
+
 class ServiceRequestVisualizer extends GenericVisualizer {
   static defaultProps = {
     title: 'Service Requests',
@@ -661,6 +672,7 @@ export {
   EncountersVisualizer,
   ImmunizationsVisualizer,
   DocumentReferencesVisualizer,
+  MediaVisualizer,
   ResourceVisualizer,
   ServiceRequestVisualizer,
   DeviceRequestVisualizer,

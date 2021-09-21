@@ -44,7 +44,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".health-record__header {\n  font-family: 'Open Sans', sans-serif;\n  display: -ms-flexbox;\n  display: flex;\n  color: #6b8eb6;\n  font-size: 1em;\n  font-weight: bold;\n  text-transform: uppercase;\n  margin: 40px 0;\n}\n​\n.health-record__header .header-divider {\n  width: 100%;\n  border-bottom: 1px solid #7e90a3;\n  margin-bottom: 10px;\n}\n​\n.report-line {\n  background: #EAEAEA;\n}\n\n.display-linebreak {\n  white-space: pre-line;\n}\n\ndl {\n  margin-top:0;\n  margin-bottom:20px\n}\n\ndd,dt {\n  line-height:1.42857\n}\n\ndt {\n  font-weight:700\n}\n\ndd {\n  margin-left:0\n}\n.dl-horizontal dd:after,.dl-horizontal dd:before {\n  content:\" \";\n  display:table\n}\n\n.dl-horizontal dd:after {\n  clear:both\n}\n\n@media (min-width:768px) {\n  .dl-horizontal dt {\n    float:left;\n    clear:left;\n    text-align:right;\n    overflow:hidden;\n    text-overflow:ellipsis;\n    white-space:nowrap\n  }\n  .dl-horizontal dd {\n    margin-left:180px\n  }\n}\n";
+var css_248z = ".health-record__header {\r\n  font-family: 'Open Sans', sans-serif;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  color: #6b8eb6;\r\n  font-size: 1em;\r\n  font-weight: bold;\r\n  text-transform: uppercase;\r\n  margin: 40px 0;\r\n}\r\n​\r\n.health-record__header .header-divider {\r\n  width: 100%;\r\n  border-bottom: 1px solid #7e90a3;\r\n  margin-bottom: 10px;\r\n}\r\n​\r\n.report-line {\r\n  background: #EAEAEA;\r\n}\r\n\r\n.display-linebreak {\r\n  white-space: pre-line;\r\n}\r\n\r\ndl {\r\n  margin-top:0;\r\n  margin-bottom:20px\r\n}\r\n\r\ndd,dt {\r\n  line-height:1.42857\r\n}\r\n\r\ndt {\r\n  font-weight:700\r\n}\r\n\r\ndd {\r\n  margin-left:0\r\n}\r\n.dl-horizontal dd:after,.dl-horizontal dd:before {\r\n  content:\" \";\r\n  display:table\r\n}\r\n\r\n.dl-horizontal dd:after {\r\n  clear:both\r\n}\r\n\r\n@media (min-width:768px) {\r\n  .dl-horizontal dt {\r\n    float:left;\r\n    clear:left;\r\n    text-align:right;\r\n    overflow:hidden;\r\n    text-overflow:ellipsis;\r\n    white-space:nowrap\r\n  }\r\n  .dl-horizontal dd {\r\n    margin-left:180px\r\n  }\r\n}\r\n";
 styleInject(css_248z);
 
 const DSTU2 = '1.0.2';
@@ -730,6 +730,23 @@ _defineProperty(DocumentReferencesVisualizer, "defaultProps", {
   keyFn: dr => dr.id
 });
 
+class MediaVisualizer extends GenericVisualizer {}
+
+_defineProperty(MediaVisualizer, "defaultProps", {
+  title: 'Media',
+  columns: [{
+    title: 'Date',
+    versions: '*',
+    format: 'date',
+    getter: d => d.createdDateTime
+  }, {
+    title: 'Content',
+    versions: '*',
+    getter: d => d.content.url
+  }],
+  keyFn: m => m.id
+});
+
 class ServiceRequestVisualizer extends GenericVisualizer {}
 
 _defineProperty(ServiceRequestVisualizer, "defaultProps", {
@@ -983,4 +1000,4 @@ _defineProperty(MedicationDispenseVisualizer, "defaultProps", {
   keyFn: m => m.id
 });
 
-export { AdverseEventVisualizer, AllergiesVisualizer, CarePlansVisualizer, CommunicationVisualizer, ConditionsVisualizer, CoverageVisualizer, DeviceRequestVisualizer, DocumentReferencesVisualizer, EncountersVisualizer, ImmunizationsVisualizer, MedicationAdministrationVisualizer, MedicationDispenseVisualizer, MedicationRequestVisualizer, MedicationsVisualizer, NutritionOrderVisualizer, ObservationsVisualizer, PatientVisualizer, ProceduresVisualizer, ReportsVisualizer, ResourceVisualizer, ServiceRequestVisualizer };
+export { AdverseEventVisualizer, AllergiesVisualizer, CarePlansVisualizer, CommunicationVisualizer, ConditionsVisualizer, CoverageVisualizer, DeviceRequestVisualizer, DocumentReferencesVisualizer, EncountersVisualizer, ImmunizationsVisualizer, MediaVisualizer, MedicationAdministrationVisualizer, MedicationDispenseVisualizer, MedicationRequestVisualizer, MedicationsVisualizer, NutritionOrderVisualizer, ObservationsVisualizer, PatientVisualizer, ProceduresVisualizer, ReportsVisualizer, ResourceVisualizer, ServiceRequestVisualizer };
