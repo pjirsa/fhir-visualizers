@@ -259,7 +259,7 @@ class GenericVisualizer extends React.Component {
               result = c.defaultValue;
             }
 
-            if (c.format == 'url') {
+            if (c.format === 'url') {
               return /*#__PURE__*/React.createElement("td", {
                 key: i
               }, /*#__PURE__*/React.createElement("div", {
@@ -304,11 +304,22 @@ class GenericVisualizer extends React.Component {
         result = c.defaultValue;
       }
 
-      return /*#__PURE__*/React.createElement("td", {
-        key: i
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "display-linebreak"
-      }, result));
+      if (c.format === 'url') {
+        return /*#__PURE__*/React.createElement("td", {
+          key: i
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "display-linebreak"
+        }, /*#__PURE__*/React.createElement("a", {
+          href: result,
+          target: "_blank"
+        }, result)));
+      } else {
+        return /*#__PURE__*/React.createElement("td", {
+          key: i
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "display-linebreak"
+        }, result));
+      }
     })), nestedRows); // TODO: multi-liners
   }
 
