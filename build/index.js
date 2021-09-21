@@ -259,7 +259,7 @@ class GenericVisualizer extends React.Component {
               result = c.defaultValue;
             }
 
-            if (c.format === 'url') {
+            if (c.format == 'url') {
               return /*#__PURE__*/React.createElement("td", {
                 key: i
               }, /*#__PURE__*/React.createElement("div", {

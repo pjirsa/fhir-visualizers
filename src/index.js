@@ -244,7 +244,7 @@ class GenericVisualizer extends React.Component {
                 if (!result && c.defaultValue) {
                   result = c.defaultValue;
                 }
-                if (c.format === 'url') {
+                if (c.format == 'url') {
                   return (<td key={i}><div className="display-linebreak"><a href={ result } target="_blank">{ result }</a></div></td>);
                 }
                 else {
