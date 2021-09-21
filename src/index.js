@@ -17,7 +17,8 @@ const FORMATTERS = {
   dateTime: (str) => moment(str).format('YYYY-MM-DD - h:mm:ss a'),
   numberWithCommas: (str) => str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
   code: (code) => `${code.code}: ${code.display ? code.display : ''}`,
-  period: (period) => `${moment(period.start).format('YYYY-MM-DD - h:mm:ss a')} -> ${moment(period.end).format('YYYY-MM-DD - h:mm:ss a')}`
+  period: (period) => `${moment(period.start).format('YYYY-MM-DD - h:mm:ss a')} -> ${moment(period.end).format('YYYY-MM-DD - h:mm:ss a')}`,
+  url: (link) => `<a href='${link}' target='_blank'>${link}</a>`
 };
 
 const SPACER = { title: '', versions: '*', getter: () => '' };
@@ -535,7 +536,7 @@ class MediaVisualizer extends GenericVisualizer {
     title: 'Media',
     columns: [
       { title: 'Date', versions: '*', format: 'date', getter: d => d.createdDateTime },
-      { title: 'Content', versions: '*', getter: d => d.content.url }
+      { title: 'Content', versions: '*', format: 'url', getter: d => d.content.url }
     ],
     keyFn: m => m.id
   };
