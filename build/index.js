@@ -62,7 +62,7 @@ const FORMATTERS = {
   numberWithCommas: str => str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
   code: code => `${code.code}: ${code.display ? code.display : ''}`,
   period: period => `${moment(period.start).format('YYYY-MM-DD - h:mm:ss a')} -> ${moment(period.end).format('YYYY-MM-DD - h:mm:ss a')}`,
-  url: link => `<a href='${link}' target='_blank'>${link}</a>`
+  url: link => link
 };
 const SPACER = {
   title: '',
@@ -259,11 +259,22 @@ class GenericVisualizer extends React.Component {
               result = c.defaultValue;
             }
 
-            return /*#__PURE__*/React.createElement("td", {
-              key: i
-            }, /*#__PURE__*/React.createElement("div", {
-              className: "display-linebreak"
-            }, result));
+            if (c.format === 'url') {
+              return /*#__PURE__*/React.createElement("td", {
+                key: i
+              }, /*#__PURE__*/React.createElement("div", {
+                className: "display-linebreak"
+              }, /*#__PURE__*/React.createElement("a", {
+                href: result,
+                target: "_blank"
+              }, result)));
+            } else {
+              return /*#__PURE__*/React.createElement("td", {
+                key: i
+              }, /*#__PURE__*/React.createElement("div", {
+                className: "display-linebreak"
+              }, result));
+            }
           })));
         }
       }
