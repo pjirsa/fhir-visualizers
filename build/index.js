@@ -761,12 +761,20 @@ _defineProperty(MediaVisualizer, "defaultProps", {
     title: 'Date',
     versions: '*',
     format: 'date',
-    getter: d => d.createdDateTime
+    getter: m => m.createdDateTime
+  }, {
+    title: 'Type',
+    versions: '*',
+    getter: m => m.type.coding[0].code
+  }, {
+    title: 'Modality',
+    versions: '*',
+    getter: m => m.modality.coding[0].code
   }, {
     title: 'Content',
     versions: '*',
     format: 'url',
-    getter: d => d.content.url
+    getter: m => m.content.url
   }],
   keyFn: m => m.id
 });
